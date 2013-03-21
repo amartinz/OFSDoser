@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/prefstitlelayout" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="splashScreen"
+            android:summary="@string/prefssummarysplashscreen"
+            android:title="@string/prefstitlesplashscreen" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="showStartupDialog"
+            android:summary="@string/prefssummarystartupdialog"
+            android:title="@string/prefstitlestartupdialog" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">OFS DoSer</string>
+    <string name="prefstitlelayout">Layout</string>
+    <string name="prefstitlesplashscreen">SplashScreen</string>
+    <string name="prefssummarysplashscreen">Enables/Disables the SplashScreen</string>
+    <string name="prefssummarystartupdialog">Enables/Disables the Dialog on Appstart</string>
+    <string name="prefstitlestartupdialog">Startup Dialog</string>
+</resources>

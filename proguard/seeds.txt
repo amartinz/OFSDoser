@@ -1,0 +1,100 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
+android.support.v4.view.ViewPager: void setScrollState(int)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter getAdapter()
+android.support.v4.view.ViewPager: void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener)
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: int getCurrentItem()
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: void setChildrenDrawingOrderEnabledCompat(boolean)
+android.support.v4.view.ViewPager: int getOffscreenPageLimit()
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: int getPageMargin()
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+net.openfiresecurity.ofsdoser.Hashdostester
+net.openfiresecurity.ofsdoser.Hashdostester: Hashdostester()
+net.openfiresecurity.ofsdoser.MainActivity
+net.openfiresecurity.ofsdoser.MainActivity: MainActivity()
+net.openfiresecurity.ofsdoser.Prefs
+net.openfiresecurity.ofsdoser.Prefs: Prefs()
+net.openfiresecurity.ofsdoser.R$dimen: int activity_horizontal_margin
+net.openfiresecurity.ofsdoser.R$dimen: int activity_vertical_margin
+net.openfiresecurity.ofsdoser.R$drawable: int ic_action_name
+net.openfiresecurity.ofsdoser.R$drawable: int ic_launcher
+net.openfiresecurity.ofsdoser.R$drawable: int loader5
+net.openfiresecurity.ofsdoser.R$drawable: int loader5_progress
+net.openfiresecurity.ofsdoser.R$drawable: int logo_evis
+net.openfiresecurity.ofsdoser.R$drawable: int logo_ofs
+net.openfiresecurity.ofsdoser.R$drawable: int ofsprof
+net.openfiresecurity.ofsdoser.R$id: int TextView01
+net.openfiresecurity.ofsdoser.R$id: int TextView02
+net.openfiresecurity.ofsdoser.R$id: int TextView03
+net.openfiresecurity.ofsdoser.R$id: int TextView04
+net.openfiresecurity.ofsdoser.R$id: int cbpHash
+net.openfiresecurity.ofsdoser.R$id: int etHashdosTarget
+net.openfiresecurity.ofsdoser.R$id: int ibHashHelp
+net.openfiresecurity.ofsdoser.R$id: int ibPrefs
+net.openfiresecurity.ofsdoser.R$id: int imageView1
+net.openfiresecurity.ofsdoser.R$id: int radio0
+net.openfiresecurity.ofsdoser.R$id: int radio1
+net.openfiresecurity.ofsdoser.R$id: int radioGroup1
+net.openfiresecurity.ofsdoser.R$id: int sbHashPacketSize
+net.openfiresecurity.ofsdoser.R$id: int sbHashThreads
+net.openfiresecurity.ofsdoser.R$id: int tbHashDos
+net.openfiresecurity.ofsdoser.R$id: int textView1
+net.openfiresecurity.ofsdoser.R$id: int textView2
+net.openfiresecurity.ofsdoser.R$id: int textView3
+net.openfiresecurity.ofsdoser.R$id: int titlebarButton1
+net.openfiresecurity.ofsdoser.R$id: int tvPacketSize
+net.openfiresecurity.ofsdoser.R$id: int tvThreads
+net.openfiresecurity.ofsdoser.R$layout: int activity_main
+net.openfiresecurity.ofsdoser.R$layout: int misc_hashdos
+net.openfiresecurity.ofsdoser.R$layout: int titlebar
+net.openfiresecurity.ofsdoser.R$string: int app_name
+net.openfiresecurity.ofsdoser.R$string: int prefssummarysplashscreen
+net.openfiresecurity.ofsdoser.R$string: int prefssummarystartupdialog
+net.openfiresecurity.ofsdoser.R$string: int prefstitlelayout
+net.openfiresecurity.ofsdoser.R$string: int prefstitlesplashscreen
+net.openfiresecurity.ofsdoser.R$string: int prefstitlestartupdialog
+net.openfiresecurity.ofsdoser.R$style: int AppBaseTheme
+net.openfiresecurity.ofsdoser.R$style: int AppTheme
+net.openfiresecurity.ofsdoser.R$style: int ProgressTheme
+net.openfiresecurity.ofsdoser.R$style: int Theme
+net.openfiresecurity.ofsdoser.R$style: int Theme_Holo
+net.openfiresecurity.ofsdoser.R$style: int Theme_Holo_ActionBarOverlay
+net.openfiresecurity.ofsdoser.R$style: int Widget_ActionBarOverlay
+net.openfiresecurity.ofsdoser.R$xml: int prefs
