@@ -143,7 +143,7 @@ public class Hashdostester extends Activity implements Runnable {
 				Builder dialog = new AlertDialog.Builder(this);
 				dialog.setTitle("Welcome!")
 						.setMessage(
-								"Root is NOT needed!\n\n1.1.2\n+ Fixed a Force Close bug, thanks to whoever submitted the crash report!\n+ General Optimizations")
+								"Root is NOT needed!\n\n1.1.3\n+ Compatible with older Devices\n+ Bugfixes\n+ OPENSOURCE!\nhttps://github.com/Evisceration/OFSDoser\n\n1.1.2\n+ Fixed a Force Close bug, thanks to whoever submitted the crash report!\n+ General Optimizations")
 						.setNeutralButton("Ok.",
 								new DialogInterface.OnClickListener() {
 
