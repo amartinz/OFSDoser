@@ -12,6 +12,7 @@
 bin/
 gen/
 proguard/
+out/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -19,3 +20,9 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+.settings/
+.gitignore
+
+# Android Studio
+.idea/
+build.gradle
