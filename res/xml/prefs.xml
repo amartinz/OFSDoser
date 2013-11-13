@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/prefstitlelayout" >
+    <PreferenceCategory android:title="@string/DUMMY">
         <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="splashScreen"
-            android:summary="@string/prefssummarysplashscreen"
-            android:title="@string/prefstitlesplashscreen" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="showStartupDialog"
-            android:summary="@string/prefssummarystartupdialog"
-            android:title="@string/prefstitlestartupdialog" />
+            android:defaultValue="false"
+            android:key="pref_extensive_logging"
+            android:summary="@string/pref_extensive_logging_summary"
+            android:title="@string/pref_extensive_logging_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>

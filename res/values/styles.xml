@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright (c) 2013. Alexander Martinz.
   -->
 
 <resources>
 
-    <style name="AppBaseTheme" parent="android:Theme.Black"/>
-
-    <style name="AppTheme" parent="AppBaseTheme">
-        <item name="android:windowTitleSize">50dip</item>
-    </style>
-
-    <style name="ProgressTheme" parent="@android:style/Widget.ProgressBar.Large">
-        <item name="android:indeterminateDrawable">@drawable/ic_launcher</item>
-        <!-- <item name="android:animationResolution">33</item> -->
-
-    </style>
+    <style name="AppBaseTheme" parent="Theme.AppCompat" />
 
 </resources>

@@ -2,26 +2,23 @@
  * Copyright (c) 2013. Alexander Martinz.
  */
 
-package net.openfiresecurity.ofsdoser;
-
-import org.jetbrains.annotations.NotNull;
+package net.openfiresecurity.ofsdoser.util;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Random;
 
-public class threadinject extends Thread {
-    String urlString;
-    String post;
-    int state;
+public class ThreadInject extends Thread {
+    private final String mUrlString;
+    private final String mPost;
+    private int mState;
 
-    threadinject(String url, String post) {
-        urlString = url;
-        this.post = post;
+    public ThreadInject(String url, String post) {
+        mUrlString = url;
+        mPost = post;
     }
 
     @Override
@@ -32,21 +29,21 @@ public class threadinject extends Thread {
         }
         setState(0);
         try {
-            @NotNull URL url = new URL(urlString);
+            URL url = new URL(mUrlString);
             setState(1);
             URLConnection conn = url.openConnection();
             conn.setDoOutput(true);
             setState(2);
-            @NotNull OutputStreamWriter osw = new OutputStreamWriter(
+            OutputStreamWriter osw = new OutputStreamWriter(
                     conn.getOutputStream());
             setState(3);
-            osw.write(post);
+            osw.write(mPost);
             osw.flush();
             osw.close();
             setState(4);
             InputStream in = conn.getInputStream();
             setState(5);
-            threadinject.copy(in, System.out, 4096);
+            ThreadInject.copy(in);
             setState(6);
             in.close();
         } catch (Throwable ignored) {
@@ -55,22 +52,22 @@ public class threadinject extends Thread {
     }
 
     public int getLocalState() {
-        return state;
+        return mState;
     }
 
     void setState(int s) {
-        state = s;
+        mState = s;
     }
 
-    public static void copy(@NotNull InputStream in, @NotNull OutputStream out, int bufferSize)
+    private static void copy(InputStream in)
             throws IOException {
-        @NotNull byte[] buffer = new byte[bufferSize];
+        byte[] buffer = new byte[4096];
         while (true) {
             int count = in.read(buffer);
             if (count == -1) {
                 break;
             }
-            out.write(buffer, 0, count);
+            System.out.write(buffer, 0, count);
         }
     }
 
