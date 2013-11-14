@@ -74,8 +74,8 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         etTarget = (EditText) v.findViewById(R.id.etHashdosTarget);
         sbPacketSize = (SeekBar) v.findViewById(R.id.sbHashPacketSize);
         sbThreads = (SeekBar) v.findViewById(R.id.sbHashThreads);
-        sbPacketSize.setMax(10240 - 1);
-        sbThreads.setMax(128 - 1);
+        sbPacketSize.setMax(1024 - 1);
+        sbThreads.setMax(512 - 1);
         sbPacketSize.setProgress(100);
         sbThreads.setProgress(1);
         tvPacketSize.setText("100");

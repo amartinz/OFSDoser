@@ -22,7 +22,7 @@ public class DosService extends Service implements Runnable {
     //====================
     // Fields
     //====================
-    private int[] states = new int[200];
+    private int[] states = new int[512];
     private boolean shouldRun = false;
     private volatile Thread mThread;
     private int mThreads = 0;
@@ -118,7 +118,6 @@ public class DosService extends Service implements Runnable {
                         if (states[i] < 6) {
                             stop = false;
                             break;
-
                         }
                     }
                 } while (!stop);
@@ -140,7 +139,6 @@ public class DosService extends Service implements Runnable {
             bu.append(value);
             bu.append("=a");
         }
-
         return bu.toString();
     }
 }

@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView3"
-        android:text="1" />
+        android:text="@string/packetsize_min" />
 
     <TextView
         android:id="@+id/TextView02"
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:text="5120" />
+        android:text="@string/packetsize_middle" />
 
     <TextView
         android:id="@+id/TextView03"
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView3"
-        android:text="10240" />
+        android:text="@string/packetsize_max" />
 
     <SeekBar
         android:id="@+id/sbHashPacketSize"
@@ -127,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/TextView02"
         android:layout_below="@+id/tvThreads"
-        android:text="64" />
+        android:text="@string/threads_middle" />
 
     <TextView
         android:id="@+id/textView0002"
@@ -135,7 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/TextView01"
-        android:text="1" />
+        android:text="@string/threads_min" />
 
     <TextView
         android:id="@+id/textView00002"
@@ -143,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tvThreads"
-        android:text="128" />
+        android:text="@string/threads_max" />
 
     <SeekBar
         android:id="@+id/sbHashThreads"

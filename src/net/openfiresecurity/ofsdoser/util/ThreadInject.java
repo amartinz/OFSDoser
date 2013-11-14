@@ -6,6 +6,7 @@ package net.openfiresecurity.ofsdoser.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
@@ -43,7 +44,7 @@ public class ThreadInject extends Thread {
             setState(4);
             InputStream in = conn.getInputStream();
             setState(5);
-            ThreadInject.copy(in);
+            ThreadInject.copy(in, System.out, 4096);
             setState(6);
             in.close();
         } catch (Throwable ignored) {
@@ -59,15 +60,15 @@ public class ThreadInject extends Thread {
         mState = s;
     }
 
-    private static void copy(InputStream in)
+    private static void copy(InputStream in, OutputStream out, int bufferSize)
             throws IOException {
-        byte[] buffer = new byte[4096];
+        byte[] buffer = new byte[bufferSize];
         while (true) {
             int count = in.read(buffer);
             if (count == -1) {
                 break;
             }
-            System.out.write(buffer, 0, count);
+            out.write(buffer, 0, count);
         }
     }
 

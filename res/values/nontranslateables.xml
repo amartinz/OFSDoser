@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="DUMMY" />
+    <string name="default_min">1</string>
+    <string name="threads_max">512</string>
+    <string name="threads_middle">256</string>
+    <string name="threads_min">@string/default_min</string>
+    <string name="packetsize_max">1024</string>
+    <string name="packetsize_middle">512</string>
+    <string name="packetsize_min">@string/default_min</string>
 </resources>
