@@ -148,10 +148,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void enableActionBar() {
+        // TODO Set to true later
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setDisplayHomeAsUpEnabled(false);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-            getActionBar().setHomeButtonEnabled(true);
+            getActionBar().setHomeButtonEnabled(false);
     }
 
     private void logDebug(String msg) {
