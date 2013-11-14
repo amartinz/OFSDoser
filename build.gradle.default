@@ -29,6 +29,22 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
+        signingConfigs {
+            release {
+                storeFile file("*Path*To*Keystore*")
+                storePassword "*Your*Store*Pass*"
+                keyAlias "*Your*Key*Alias*"
+                keyPassword "*Your*Key*Pass*"
+            }
+        }
+        buildTypes {
+            release {
+                runProguard true
+                proguardFile 'proguard.cfg'
+                signingConfig signingConfigs.release
+            }
+        }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
