@@ -10,9 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="HashDos Activated"
-        android:textOff="DoS not running."
-        android:textOn="DoS running..." />
+        android:textOff="@string/general_stress_test_off"
+        android:textOn="@string/general_stress_test_on" />
 
     <EditText
         android:id="@+id/etHashdosTarget"
@@ -22,8 +21,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="Target IP"
-        android:text="127.0.0.1" />
+        android:hint="@string/general_hint_target" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"
@@ -37,13 +35,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="PHP Server" />
+            android:text="@string/general_server_php" />
 
         <RadioButton
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Java Server" />
+            android:text="@string/general_server_java" />
     </RadioGroup>
 
     <TextView
@@ -52,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/radioGroup1"
-        android:text="Packet Size"
+        android:text="@string/general_packet_size"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -61,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:text="(in KiloBytes)" />
+        android:text="@string/general_packet_size_units" />
 
     <TextView
         android:id="@+id/tvPacketSize"
@@ -69,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
         android:layout_alignLeft="@+id/cbpHash"
-        android:text=""
+        android:text="@string/default_empty"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -79,7 +77,8 @@
         android:layout_alignBottom="@+id/TextView01"
         android:layout_alignLeft="@+id/cbpHash"
         android:layout_below="@+id/sbHashPacketSize"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/default_empty" />
 
     <TextView
         android:id="@+id/TextView04"
@@ -87,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView3"
-        android:text="@string/packetsize_min" />
+        android:text="@string/packet_size_min" />
 
     <TextView
         android:id="@+id/TextView02"
@@ -95,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:text="@string/packetsize_middle" />
+        android:text="@string/packet_size_middle" />
 
     <TextView
         android:id="@+id/TextView03"
@@ -103,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView3"
-        android:text="@string/packetsize_max" />
+        android:text="@string/packet_size_max" />
 
     <SeekBar
         android:id="@+id/sbHashPacketSize"
@@ -118,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/sbHashPacketSize"
-        android:text="Threads"
+        android:text="@string/general_threads"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView

@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
+
     <string name="app_name">OFS Stress-Tester</string>
 
     <!-- Activity -->
     <string name="activity_doser">Stress-Tester</string>
 
+    <!-- General -->
+    <string name="default_empty" />
+
     <!-- Actions -->
+    <string name="action_settings">Settings</string>
     <string name="action_press_again">Press once again to exit!</string>
+
+    <!-- DoSer -->
+    <string name="general_threads">Threads</string>
+    <string name="general_packet_size">Packet Size</string>
+    <string name="general_packet_size_units">(in KiloBytes)</string>
+    <string name="general_server_java">Java Server</string>
+    <string name="general_server_php">PHP Server</string>
+    <string name="general_hint_target">Target IP (127.0.0.1)</string>
+    <string name="general_stress_test_on">Stress-Test running</string>
+    <string name="general_stress_test_off">Stress-Test not running</string>
 
     <!-- Preferences -->
     <string name="pref_extensive_logging_title">Extensive Logging</string>
