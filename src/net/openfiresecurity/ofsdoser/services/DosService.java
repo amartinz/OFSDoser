@@ -6,6 +6,7 @@ import android.os.IBinder;
 
 import net.openfiresecurity.ofsdoser.util.Lists;
 import net.openfiresecurity.ofsdoser.util.ThreadInject;
+import net.openfiresecurity.ofsdoser.util.WakeLocker;
 
 import java.util.List;
 
@@ -63,6 +64,7 @@ public class DosService extends Service implements Runnable {
     }
 
     synchronized void startThread() {
+        WakeLocker.acquireFull(this);
         if (mThread == null) {
             mThread = new Thread(this);
             assert mThread != null;
@@ -71,6 +73,7 @@ public class DosService extends Service implements Runnable {
     }
 
     synchronized void stopThread() {
+        WakeLocker.release();
         if (mThread != null) {
             Thread stopper = mThread;
             mThread.interrupt();
