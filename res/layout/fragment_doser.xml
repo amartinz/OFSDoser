@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/cbpHash"
+        android:layout_alignLeft="@+id/textView002"
         android:text="@string/default_empty"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/TextView01"
-        android:layout_alignLeft="@+id/cbpHash"
+        android:layout_alignLeft="@+id/textView002"
         android:layout_below="@+id/sbHashPacketSize"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/default_empty" />
