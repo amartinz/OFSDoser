@@ -11,23 +11,19 @@ import android.util.AttributeSet;
 public class EditTextIntegerPreference extends EditTextPreference {
 
     private Integer mInteger;
-    private Context mContext;
 
     public EditTextIntegerPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        mContext = context;
         getEditText().setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
     }
 
     public EditTextIntegerPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mContext = context;
         getEditText().setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
     }
 
     public EditTextIntegerPreference(Context context) {
         super(context);
-        mContext = context;
         getEditText().setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
     }
 
