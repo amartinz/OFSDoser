@@ -1,0 +1,27 @@
+package net.openfiresecurity.ofsdoser;
+
+import android.app.Application;
+
+import org.acra.ACRA;
+import org.acra.ReportingInteractionMode;
+import org.acra.annotation.ReportsCrashes;
+
+//Optional, Crash reporting, just remove if not needed and / or setup
+@ReportsCrashes(
+        formKey = "",
+        formUri = "http://YOUR*URL/YOUR*DATABASE/_design/acra-storage/_update/report",
+        reportType = org.acra.sender.HttpSender.Type.JSON,
+        httpMethod = org.acra.sender.HttpSender.Method.PUT,
+        formUriBasicAuthLogin = "YOUR*USER",
+        formUriBasicAuthPassword = "YOUR*PASS",
+        mode = ReportingInteractionMode.TOAST,
+        forceCloseDialogAfterToast = false, // optional, default false
+        resToastText = R.string.crash_toast_text)
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // The following line triggers the initialization of ACRA
+        ACRA.init(this);
+    }
+}

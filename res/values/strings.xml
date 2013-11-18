@@ -37,6 +37,7 @@
 
     <!-- Information -->
     <string name="info_timeout">Timeout: %s milliseconds</string>
+    <string name="info_counter">Packets sent: %s</string>
 
     <!-- Preferences -->
     <string name="pref_extensive_logging_title">Extensive Logging</string>
@@ -49,5 +50,8 @@
 
     <!-- Debugging -->
     <string name="debugging_title">Debugging</string>
+
+    <!-- Crashes -->
+    <string name="crash_toast_text">Sorry but the Application crashed!\nSent a report to the Developer!</string>
 
 </resources>

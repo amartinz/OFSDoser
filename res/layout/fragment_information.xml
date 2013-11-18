@@ -12,6 +12,15 @@
         android:id="@+id/tvTimeout"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_counter"
+        android:id="@+id/tvCounter"
+        android:layout_below="@+id/tvTimeout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
 </RelativeLayout>

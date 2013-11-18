@@ -3,8 +3,9 @@ package net.openfiresecurity.ofsdoser.services;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
 
+import net.openfiresecurity.ofsdoser.MainActivity;
+import net.openfiresecurity.ofsdoser.fragments.InformationFragment;
 import net.openfiresecurity.ofsdoser.util.Lists;
 import net.openfiresecurity.ofsdoser.util.ThreadInject;
 import net.openfiresecurity.ofsdoser.util.WakeLocker;
@@ -20,18 +21,20 @@ public class DosService extends Service implements Runnable {
     public static final String BUNDLE_PACKETSIZE = "bundle_packetsize";
     public static final String BUNDLE_JAVA = "bundle_java";
     public static final String BUNDLE_HOST = "bundle_host";
+    public static final String BUNDLE_GET_INSTANCE = "bundle_get_instance";
 
     //====================
     // Fields
     //====================
-    private int[] states = new int[512];
+    public static int[] states = new int[512];
     private boolean shouldRun = false;
     private volatile Thread mThread;
     private int mThreads = 0;
     private int mPacketSize = 0;
     private boolean mJava = false;
     private String mHost = "";
-    public static int mCounterDone = 0;
+    private int mCounterDone = 0;
+    private static InformationFragment mInformationFragment;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -50,6 +53,8 @@ public class DosService extends Service implements Runnable {
             mHost = intent.getStringExtra(DosService.BUNDLE_HOST);
             shouldRun = true;
             startThread();
+        } else if (intent.hasExtra(DosService.BUNDLE_GET_INSTANCE)) {
+// Left Blank
         } else {
             shouldRun = false;
             stopThread();
@@ -89,7 +94,7 @@ public class DosService extends Service implements Runnable {
                 // Doser is done
             } else if (localState == 7) {
                 mCounterDone++;
-                Log.e("DoSer", "State is 7! Counter: " + mCounterDone);
+                MainActivity.mInformationFragment.updateProgress(mCounterDone);
                 // Error ?
             } else {
 
@@ -143,7 +148,6 @@ public class DosService extends Service implements Runnable {
                     for (int i = 0; i < t.length; i++) {
                         set(i, t[i].getLocalState());
                     }
-
                     try {
                         Thread.sleep(300L);
                     } catch (InterruptedException e) {

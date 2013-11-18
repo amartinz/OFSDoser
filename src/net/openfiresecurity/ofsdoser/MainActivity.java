@@ -30,9 +30,9 @@ public class MainActivity extends ActionBarActivity {
     //====================
     // Fragments
     //====================
-    DosFragment mDosFragment;
-    InformationFragment mInformationFragment;
-    PrefFragment mPrefFragment;
+    public static DosFragment mDosFragment;
+    public static InformationFragment mInformationFragment;
+    public static PrefFragment mPrefFragment;
     //====================
     // Fields
     //====================

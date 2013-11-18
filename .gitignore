@@ -4,3 +4,4 @@ build/
 *.iml
 *.apk
 build.gradle
+MyApplication.java
