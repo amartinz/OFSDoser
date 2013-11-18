@@ -13,6 +13,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import net.openfiresecurity.ofsdoser.fragments.DosFragment;
@@ -42,12 +44,12 @@ public class MainActivity extends ActionBarActivity {
     // Elements
     //====================
     private ViewPager mPager;
-    private PagerAdapter mPagerAdapter;
     private List<String> mTitleList;
     //====================
     // Others
     //====================
     private Toast mToast;
+    public ProgressBar mProgress;
 
 
     /**
@@ -75,6 +77,9 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+        mProgress = (ProgressBar) (menu.findItem(R.id.action_progress))
+                .getActionView().findViewById(R.id.cbpHash);
+        mProgress.setVisibility(View.INVISIBLE);
         return true;
     }
 
@@ -106,7 +111,7 @@ public class MainActivity extends ActionBarActivity {
         enableActionBar();
 
         mPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), getFragmentList(), getTitleList());
+        PagerAdapter mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), getFragmentList(), getTitleList());
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(0);
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
@@ -173,7 +178,7 @@ public class MainActivity extends ActionBarActivity {
             getActionBar().setHomeButtonEnabled(false);
     }
 
-    private void logDebug(String msg) {
+    public void logDebug(String msg) {
         if (mDebug) {
             Log.e("OFSDOSER", msg);
         }

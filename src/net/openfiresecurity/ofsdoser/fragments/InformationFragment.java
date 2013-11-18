@@ -1,6 +1,5 @@
 package net.openfiresecurity.ofsdoser.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ public class InformationFragment extends Fragment {
 
     private View v;
     private TextView mTimeout, mCounter;
-    private final int[] mColors = {Color.WHITE, Color.BLUE, Color.YELLOW, Color.rgb(255, 120, 0), Color.RED, Color.rgb(50, 50, 50), Color.GRAY, Color.rgb(120, 120, 120)};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,8 +35,11 @@ public class InformationFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mCounter.setText(getString(R.string.info_counter, mCount));
-                v.invalidate();
+                try {
+                    mCounter.setText(getString(R.string.info_counter, mCount));
+                    v.invalidate();
+                } catch (Exception ignored) {
+                }
             }
         });
     }

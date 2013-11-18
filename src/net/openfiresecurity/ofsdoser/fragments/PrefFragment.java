@@ -18,6 +18,7 @@ public class PrefFragment extends PreferenceFragment implements Preference.OnPre
 
     private EditTextIntegerPreference mTimeout;
     private CheckBoxPreference mDebug;
+    private CheckBoxPreference mInformationshow;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,9 @@ public class PrefFragment extends PreferenceFragment implements Preference.OnPre
 
         mDebug = (CheckBoxPreference) findPreference(PreferenceStorage.PREF_EXTENSIVE_LOGGING);
         mDebug.setOnPreferenceChangeListener(this);
+
+        mInformationshow = (CheckBoxPreference) findPreference(PreferenceStorage.PREF_INFORMATION_UPDATE);
+        mInformationshow.setOnPreferenceChangeListener(this);
 
         mTimeout = (EditTextIntegerPreference) findPreference(PreferenceStorage.PREF_DOS_TIMEOUT);
         mTimeout.setOnPreferenceChangeListener(this);
@@ -37,6 +41,9 @@ public class PrefFragment extends PreferenceFragment implements Preference.OnPre
 
         if (preference == mDebug) {
             PreferenceStorage.setPreference(PreferenceStorage.PREF_EXTENSIVE_LOGGING, newValue);
+            changed = true;
+        } else if (preference == mInformationshow) {
+            PreferenceStorage.setPreference(PreferenceStorage.PREF_INFORMATION_UPDATE, newValue);
             changed = true;
         } else if (preference == mTimeout) {
             if (newValue.equals(""))

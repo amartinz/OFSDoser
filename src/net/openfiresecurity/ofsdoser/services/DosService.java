@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 
 import net.openfiresecurity.ofsdoser.MainActivity;
-import net.openfiresecurity.ofsdoser.fragments.InformationFragment;
 import net.openfiresecurity.ofsdoser.util.Lists;
+import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 import net.openfiresecurity.ofsdoser.util.ThreadInject;
 import net.openfiresecurity.ofsdoser.util.WakeLocker;
 
@@ -34,7 +34,6 @@ public class DosService extends Service implements Runnable {
     private boolean mJava = false;
     private String mHost = "";
     private int mCounterDone = 0;
-    private static InformationFragment mInformationFragment;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -54,7 +53,7 @@ public class DosService extends Service implements Runnable {
             shouldRun = true;
             startThread();
         } else if (intent.hasExtra(DosService.BUNDLE_GET_INSTANCE)) {
-// Left Blank
+            // Left Blank
         } else {
             shouldRun = false;
             stopThread();
@@ -69,7 +68,7 @@ public class DosService extends Service implements Runnable {
     private void set(int i, int localState) {
         states[i] = localState;
         //only do if the user decided to show it
-        if (true) {
+        if (PreferenceStorage.INFORMATION_UPDATE) {
             // Just woke up
             if (localState == 0) {
 
@@ -150,8 +149,7 @@ public class DosService extends Service implements Runnable {
                     }
                     try {
                         Thread.sleep(300L);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    } catch (InterruptedException ignored) {
                     }
                     stop = true;
                     for (int i = 0; i < t.length; i++) {

@@ -152,13 +152,6 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView002" />
 
-    <ProgressBar
-        android:id="@+id/cbpHash"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_below="@+id/sbHashThreads"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -10,13 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import net.openfiresecurity.ofsdoser.MainActivity;
 import net.openfiresecurity.ofsdoser.R;
 import net.openfiresecurity.ofsdoser.services.DosService;
 import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
@@ -29,7 +29,6 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
 
     private RadioButton rbJava;
     private ToggleButton tb;
-    private ProgressBar cpb;
     private EditText etTarget;
     private SeekBar sbThreads, sbPacketSize;
     private TextView tvPacketSize, tvThreads;
@@ -111,8 +110,6 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         });
 
         rbJava = (RadioButton) v.findViewById(R.id.radio1);
-        cpb = (ProgressBar) v.findViewById(R.id.cbpHash);
-        cpb.setVisibility(View.INVISIBLE);
         tvPacketSize = (TextView) v.findViewById(R.id.tvPacketSize);
         tvThreads = (TextView) v.findViewById(R.id.tvThreads);
         etTarget = (EditText) v.findViewById(R.id.etHashdosTarget);
@@ -132,8 +129,8 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
     }
 
     private void startThread() {
-        makeToast("DoS Initiated!");
-        cpb.setVisibility(View.VISIBLE);
+        makeToast("Stress-Test Initiated!");
+        ((MainActivity) getActivity()).mProgress.setVisibility(View.VISIBLE);
         Intent i = new Intent(getActivity(), DosService.class);
         i.putExtra(DosService.BUNDLE_THREADS, sbThreads.getProgress() + 1);
         i.putExtra(DosService.BUNDLE_PACKETSIZE, sbPacketSize.getProgress() + 1);
@@ -143,8 +140,8 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
     }
 
     private void stopThread() {
-        makeToast("DoS Stopped!");
-        cpb.setVisibility(View.INVISIBLE);
+        makeToast("Stress-Test Stopped!");
+        ((MainActivity) getActivity()).mProgress.setVisibility(View.INVISIBLE);
         getActivity().startService(new Intent(getActivity(), DosService.class));
     }
 

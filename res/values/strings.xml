@@ -9,7 +9,6 @@
     <string name="activity_preferences">Preferences</string>
 
     <!-- General -->
-    <string name="default_empty" />
     <string name="default_yes">Yes</string>
     <string name="default_no">No</string>
     <string name="default_abort">Abort</string>
@@ -48,6 +47,8 @@
     <string name="pref_stress_test_title">Stress-Test</string>
     <string name="pref_stress_test_timeout_title">Timeout</string>
     <string name="pref_stress_test_timeout_summary">Specify the timeout for each request.</string>
+    <string name="pref_information_update_title">Show information</string>
+    <string name="pref_information_update_summary">Shows information about the Stress-Test.\nMay slow down your device drastically!</string>
 
     <!-- Debugging -->
     <string name="debugging_title">Debugging</string>

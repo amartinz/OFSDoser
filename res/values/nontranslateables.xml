@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="DUMMY" translateable="false" />
+    <string name="default_empty" translateable="false" />
     <string name="default_min" translateable="false">1</string>
     <string name="threads_max" translateable="false">512</string>
     <string name="threads_middle" translateable="false">256</string>
