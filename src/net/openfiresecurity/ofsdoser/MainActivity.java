@@ -4,11 +4,8 @@
 
 package net.openfiresecurity.ofsdoser;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,8 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import net.openfiresecurity.ofsdoser.activities.PrefActivity;
 import net.openfiresecurity.ofsdoser.fragments.DosFragment;
+import net.openfiresecurity.ofsdoser.fragments.InformationFragment;
+import net.openfiresecurity.ofsdoser.fragments.PrefFragment;
+import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 import net.openfiresecurity.ofsdoser.widgets.adapters.ScreenSlidePagerAdapter;
 import net.openfiresecurity.ofsdoser.widgets.transformers.ZoomOutPageTransformer;
 
@@ -28,6 +27,12 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    //====================
+    // Fragments
+    //====================
+    DosFragment mDosFragment;
+    InformationFragment mInformationFragment;
+    PrefFragment mPrefFragment;
     //====================
     // Fields
     //====================
@@ -42,7 +47,6 @@ public class MainActivity extends ActionBarActivity {
     //====================
     // Others
     //====================
-    private SharedPreferences mPrefs;
     private Toast mToast;
 
 
@@ -70,7 +74,6 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -80,7 +83,8 @@ public class MainActivity extends ActionBarActivity {
         // Handle action buttons
         switch (item.getItemId()) {
             case R.id.action_settings:
-                startActivity(new Intent(MainActivity.this, PrefActivity.class));
+                mPager.setCurrentItem(2, true);
+                /*startActivity(new Intent(MainActivity.this, PrefFragment.class));*/
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -93,9 +97,10 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
-        mPrefs = PreferenceManager
-                .getDefaultSharedPreferences(this);
-        mDebug = mPrefs.getBoolean("pref_extensive_logging", false);
+        // Get hold of our SingleTon
+        PreferenceStorage.getInstance(this);
+
+        mDebug = PreferenceStorage.EXTENSIVE_LOGGING;
         logDebug("Extensive Logging: " + (mDebug ? "enabled" : "disabled"));
 
         enableActionBar();
@@ -121,6 +126,7 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+        mPager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.viewpager_margin));
     }
 
     @Override
@@ -134,7 +140,17 @@ public class MainActivity extends ActionBarActivity {
     private List<Fragment> getFragmentList() {
         List<Fragment> mList = new ArrayList<>();
 
-        mList.add(new DosFragment());
+        // Get instance and add DosFragment
+        mDosFragment = new DosFragment();
+        mList.add(mDosFragment);
+
+        // Get instance and add InformationFragment
+        mInformationFragment = new InformationFragment();
+        mList.add(mInformationFragment);
+
+        // Get instance and add PrefFragment
+        mPrefFragment = new PrefFragment();
+        mList.add(mPrefFragment);
 
         return mList;
     }
@@ -143,6 +159,8 @@ public class MainActivity extends ActionBarActivity {
         mTitleList = new ArrayList<>();
 
         mTitleList.add(getString(R.string.activity_doser));
+        mTitleList.add(getString(R.string.activity_information));
+        mTitleList.add(getString(R.string.activity_preferences));
 
         return mTitleList;
     }
@@ -159,6 +177,10 @@ public class MainActivity extends ActionBarActivity {
         if (mDebug) {
             Log.e("OFSDOSER", msg);
         }
+    }
+
+    public void updateInformation() {
+        mInformationFragment.update();
     }
 
 }

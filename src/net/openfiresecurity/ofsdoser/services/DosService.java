@@ -3,6 +3,7 @@ package net.openfiresecurity.ofsdoser.services;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 import net.openfiresecurity.ofsdoser.util.Lists;
 import net.openfiresecurity.ofsdoser.util.ThreadInject;
@@ -30,6 +31,7 @@ public class DosService extends Service implements Runnable {
     private int mPacketSize = 0;
     private boolean mJava = false;
     private String mHost = "";
+    public static int mCounterDone = 0;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -61,6 +63,38 @@ public class DosService extends Service implements Runnable {
     //====================
     private void set(int i, int localState) {
         states[i] = localState;
+        //only do if the user decided to show it
+        if (true) {
+            // Just woke up
+            if (localState == 0) {
+
+                // Setting up connection
+            } else if (localState == 1) {
+
+                // Creating writer
+            } else if (localState == 2) {
+
+                // Writing...
+            } else if (localState == 3) {
+
+                // Flushing and closing
+            } else if (localState == 4) {
+
+                // Creating inputstream
+            } else if (localState == 5) {
+
+                // Reading inputstream
+            } else if (localState == 6) {
+
+                // Doser is done
+            } else if (localState == 7) {
+                mCounterDone++;
+                Log.e("DoSer", "State is 7! Counter: " + mCounterDone);
+                // Error ?
+            } else {
+
+            }
+        }
     }
 
     synchronized void startThread() {
@@ -89,7 +123,6 @@ public class DosService extends Service implements Runnable {
     @Override
     public void run() {
         while (shouldRun) {
-            String url = "http://" + mHost + "/";
             ThreadInject[] t = new ThreadInject[mThreads];
             List<String> list;
             if (mJava) {
@@ -99,7 +132,7 @@ public class DosService extends Service implements Runnable {
             }
             do {
                 for (int i = 0; i < t.length; i++) {
-                    t[i] = new ThreadInject(url, getPost(list,
+                    t[i] = new ThreadInject(mHost, getPost(list,
                             mPacketSize * 1024));
                 }
                 for (ThreadInject aT : t) {

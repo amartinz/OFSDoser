@@ -5,13 +5,25 @@
 
     <!-- Activity -->
     <string name="activity_doser">Stress-Tester</string>
+    <string name="activity_information">Information</string>
+    <string name="activity_preferences">Preferences</string>
 
     <!-- General -->
     <string name="default_empty" />
+    <string name="default_yes">Yes</string>
+    <string name="default_no">No</string>
+    <string name="default_abort">Abort</string>
 
     <!-- Actions -->
     <string name="action_settings">Settings</string>
     <string name="action_press_again">Press once again to exit!</string>
+
+    <!-- Validator -->
+    <string name="validator_validating">Validating…</string>
+    <string name="validator_checking">Checking the Target…</string>
+
+    <!-- Hints -->
+    <string name="hint_swipe_left">Swipe Left to view more Information.</string>
 
     <!-- DoSer -->
     <string name="general_threads">Threads</string>
@@ -23,8 +35,19 @@
     <string name="general_stress_test_on">Stress-Test running</string>
     <string name="general_stress_test_off">Stress-Test not running</string>
 
+    <!-- Information -->
+    <string name="info_timeout">Timeout: %s milliseconds</string>
+
     <!-- Preferences -->
     <string name="pref_extensive_logging_title">Extensive Logging</string>
     <string name="pref_extensive_logging_summary">Log debug messages to LogCat.</string>
+
+    <!-- Stress-Test -->
+    <string name="pref_stress_test_title">Stress-Test</string>
+    <string name="pref_stress_test_timeout_title">Timeout</string>
+    <string name="pref_stress_test_timeout_summary">Specify the timeout for each request.</string>
+
+    <!-- Debugging -->
+    <string name="debugging_title">Debugging</string>
 
 </resources>
