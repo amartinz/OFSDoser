@@ -7,12 +7,6 @@
     <!-- ViewPager -->
     <dimen name="viewpager_margin">4dp</dimen>
 
-    <declare-styleable name="StaggeredGridView">
-        <attr name="drawSelectorOnTop" format="boolean" />
-        <attr name="numColumns" format="integer" />
-        <attr name="itemMargin" format="dimension" />
-    </declare-styleable>
-
     <!-- PreferenceFragment Support -->
     <!-- Preference fragment padding, bottom -->
     <dimen name="preference_fragment_padding_bottom">0dp</dimen>
