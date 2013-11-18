@@ -13,6 +13,7 @@
     <string name="default_yes">Yes</string>
     <string name="default_no">No</string>
     <string name="default_abort">Abort</string>
+    <string name="defaul_cancel">Cancel</string>
 
     <!-- Actions -->
     <string name="action_settings">Settings</string>
