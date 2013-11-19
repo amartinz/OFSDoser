@@ -1,0 +1,5 @@
+[gerrit]
+host=gerrit.openfire-technologies.net
+port=29418
+project=OFSDoser.git
+defaultbranch=master
