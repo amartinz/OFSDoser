@@ -125,17 +125,21 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         sbPacketSize.setOnSeekBarChangeListener(this);
         sbThreads.setOnSeekBarChangeListener(this);
 
+        etTarget.setText(PreferenceStorage.LAST_TARGET);
+
         return v;
     }
 
     private void startThread() {
+        final String mTarget = (etTarget.getText() != null ? etTarget.getText().toString() : "");
+        PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_TARGET, mTarget);
         makeToast("Stress-Test Initiated!");
         ((MainActivity) getActivity()).mProgress.setVisibility(View.VISIBLE);
         Intent i = new Intent(getActivity(), DosService.class);
         i.putExtra(DosService.BUNDLE_THREADS, sbThreads.getProgress() + 1);
         i.putExtra(DosService.BUNDLE_PACKETSIZE, sbPacketSize.getProgress() + 1);
         i.putExtra(DosService.BUNDLE_JAVA, rbJava.isChecked());
-        i.putExtra(DosService.BUNDLE_HOST, etTarget.getText().toString());
+        i.putExtra(DosService.BUNDLE_HOST, mTarget);
         getActivity().startService(i);
     }
 
