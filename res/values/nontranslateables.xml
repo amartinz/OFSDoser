@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
+    <string name="app_name" translateable="false">OFS Stress-Tester</string>
     <string name="DUMMY" translateable="false" />
     <string name="default_empty" translateable="false" />
     <string name="default_min" translateable="false">1</string>

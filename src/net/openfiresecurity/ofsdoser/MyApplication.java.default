@@ -14,9 +14,7 @@ import org.acra.annotation.ReportsCrashes;
         httpMethod = org.acra.sender.HttpSender.Method.PUT,
         formUriBasicAuthLogin = "YOUR*USER",
         formUriBasicAuthPassword = "YOUR*PASS",
-        mode = ReportingInteractionMode.SILENT,
-        forceCloseDialogAfterToast = false, // optional, default false
-        resToastText = R.string.crash_toast_text)
+        mode = ReportingInteractionMode.SILENT)
 public class MyApplication extends Application {
     @Override
     public void onCreate() {

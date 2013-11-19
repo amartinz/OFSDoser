@@ -41,7 +41,7 @@ public class TargetValidator extends AsyncTask<String, Integer, String> {
         dialog.setCancelable(false);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setButton(DialogInterface.BUTTON_NEUTRAL,
-                mFragment.getString(R.string.default_abort),
+                mFragment.getString(R.string.dialog_abort),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -74,14 +74,12 @@ public class TargetValidator extends AsyncTask<String, Integer, String> {
 
             if (returnVal == 0) {
                 logDebug("Target is reachable!");
-                target = "http://" + target + "/";
-                logDebug("Target: " + target);
-                if (URLUtil.isValidUrl(target)) {
+                if (URLUtil.isValidUrl("http://" + target + "/")) {
                     logDebug("Target is valid URL!");
                     return "1|" + target;
                 }
             } else {
-                logDebug("Target not reachable!");
+                logDebug("Target is not reachable!");
             }
         } catch (Exception exc) {
             logDebug("Error: " + exc.getLocalizedMessage());

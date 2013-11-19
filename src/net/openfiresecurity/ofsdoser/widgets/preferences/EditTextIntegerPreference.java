@@ -31,6 +31,7 @@ public class EditTextIntegerPreference extends EditTextPreference {
     public void setText(String text) {
         final boolean wasBlocking = shouldDisableDependents();
         mInteger = parseInteger(text);
+        mInteger = (mInteger < 100 ? 100 : mInteger);
         persistString(mInteger != null ? mInteger.toString() : null);
         final boolean isBlocking = shouldDisableDependents();
         if (isBlocking != wasBlocking) notifyDependencyChange(isBlocking);

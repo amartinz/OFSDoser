@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import net.openfiresecurity.ofsdoser.MainActivity;
@@ -32,7 +31,6 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
     private EditText etTarget;
     private SeekBar sbThreads, sbPacketSize;
     private TextView tvPacketSize, tvThreads;
-    private Toast mToast;
     private boolean mRunning = false;
 
     private void logDebug(String msg) {
@@ -49,7 +47,7 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
                 tmp = tmp.replace("http://", "").replace("/", "");
                 new TargetValidator(this).execute(tmp);
             } else {
-                makeToast("Please enter a valid Target!");
+                ((MainActivity) getActivity()).makeToast(getString(R.string.warning_valid_target));
             }
         }
     }
@@ -60,15 +58,15 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         final String mResult = parts[1];
         if (isValid) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-            dialog.setTitle("Success");
-            dialog.setMessage("Target\n" + mResult + "\nis reachable!\n\nStart Stress-Test now?");
-            dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            dialog.setTitle(getString(R.string.dialog_success));
+            dialog.setMessage(getString(R.string.info_target_reachable_full, mResult));
+            dialog.setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
                 }
             });
-            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            dialog.setPositiveButton(getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     etTarget.setText(mResult);
@@ -79,7 +77,7 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
             });
             dialog.show();
         } else {
-            makeToast("Target not reachable!");
+            ((MainActivity) getActivity()).makeToast(getString(R.string.info_target_not_reachable));
             tb.setChecked(false);
         }
     }
@@ -88,7 +86,7 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
     public void onLowMemory() {
         super.onLowMemory();
         stopThread();
-        makeToast("Running out of Memory! Lower Threads!");
+        ((MainActivity) getActivity()).makeToast(getString(R.string.warning_oom));
     }
 
     @Override
@@ -133,7 +131,7 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
     private void startThread() {
         final String mTarget = (etTarget.getText() != null ? etTarget.getText().toString() : "");
         PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_TARGET, mTarget);
-        makeToast("Stress-Test Initiated!");
+        ((MainActivity) getActivity()).makeToast(getString(R.string.info_stress_test_started));
         ((MainActivity) getActivity()).mProgress.setVisibility(View.VISIBLE);
         Intent i = new Intent(getActivity(), DosService.class);
         i.putExtra(DosService.BUNDLE_THREADS, sbThreads.getProgress() + 1);
@@ -144,17 +142,9 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
     }
 
     private void stopThread() {
-        makeToast("Stress-Test Stopped!");
+        ((MainActivity) getActivity()).makeToast(getString(R.string.info_stress_test_stopped));
         ((MainActivity) getActivity()).mProgress.setVisibility(View.INVISIBLE);
         getActivity().startService(new Intent(getActivity(), DosService.class));
-    }
-
-    private void makeToast(String msg) {
-        if (mToast != null)
-            mToast.cancel();
-
-        mToast = Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT);
-        mToast.show();
     }
 
     @Override

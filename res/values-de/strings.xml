@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+
+    <!-- Activity -->
+    <string name="activity_doser">Stress-Tester</string>
+    <string name="activity_information">Informationen</string>
+    <string name="activity_preferences">Einstellungen</string>
+
+    <!-- Information -->
+    <string name="info_target_not_reachable">Ziel ist nicht erreichbar!</string>
+    <string name="info_target_reachable">Ziel ist erreichbar!</string>
+    <string name="info_target_reachable_full">Ziel: %s\nist erreichbar!\n\nStress-Test jetzt starten?</string>
+    <string name="info_stress_test_started">Stress-Test gestartet!</string>
+    <string name="info_stress_test_stopped">Stress-Test gestoppt!</string>
+
+    <!-- Warnings -->
+    <string name="warning_oom">Kein RAM mehr verfügbar! Verringere die Threads!</string>
+    <string name="warning_valid_target">Bitte gib ein gültiges Ziel ein!</string>
+
+    <!-- General -->
+    <string name="dialog_yes">Ja</string>
+    <string name="dialog_no">Nein</string>
+    <string name="dialog_abort">Abbrechen</string>
+    <string name="dialog_cancel">@string/dialog_abort</string>
+    <string name="dialog_success">Erfolg</string>
+
+    <!-- Actions -->
+    <string name="action_settings">@string/activity_preferences</string>
+    <string name="action_press_again">Erneut drücken zum Beenden!</string>
+
+    <!-- Validator -->
+    <string name="validator_validating">Validiere…</string>
+    <string name="validator_checking">Überprüfe das Ziel…</string>
+
+    <!-- Hints -->
+    <string name="hint_swipe_left">Wische nach links für mehr Informationen.</string>
+
+    <!-- DoSer -->
+    <string name="general_threads">Threads</string>
+    <string name="general_packet_size">Paket Größe</string>
+    <string name="general_packet_size_units">(in KiloBytes)</string>
+    <string name="general_server_java">Java Server</string>
+    <string name="general_server_php">PHP Server</string>
+    <string name="general_hint_target">Ziel IP / Domain (127.0.0.1)</string>
+    <string name="general_stress_test_on">Stress-Test läuft</string>
+    <string name="general_stress_test_off">Stress-Test läuft nicht</string>
+
+    <!-- Information -->
+    <string name="info_timeout">Timeout: %s Millisekunden</string>
+    <string name="info_counter">Pakete gesendet: %s</string>
+
+    <!-- Preferences -->
+    <string name="pref_extensive_logging_title">Erweitertes Protokollieren</string>
+    <string name="pref_extensive_logging_summary">Protokolliere Debug Nachrichten in den LogCat.</string>
+
+    <!-- Stress-Test -->
+    <string name="pref_stress_test_title">Stress-Test</string>
+    <string name="pref_stress_test_timeout_title">Timeout</string>
+    <string name="pref_stress_test_timeout_summary">Lege das Timeout für jede Anfrage fest.\n0 für den Standard Timeout.</string>
+    <string name="pref_information_update_title">Zeige Informationen</string>
+    <string name="pref_information_update_summary">Zeigt Informationen über den Stress-Test.\nKann das Gerät drastisch verlangsamen!</string>
+
+    <!-- Debugging -->
+    <string name="debugging_title">Debugging</string>
+
+    <!-- Crashes -->
+    <string name="pref_disable_acra">Deaktiviere Fehlerberichte</string>
+    <string name="pref_acra_disabled">Fehlerberichte deaktiviert</string>
+    <string name="pref_acra_enabled">Fehlerberichte aktiviert</string>
+
+</resources>

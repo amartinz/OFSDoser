@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
 
-    <string name="app_name">OFS Stress-Tester</string>
-
     <!-- Activity -->
     <string name="activity_doser">Stress-Tester</string>
     <string name="activity_information">Information</string>
     <string name="activity_preferences">Preferences</string>
 
+    <!-- Information -->
+    <string name="info_target_not_reachable">Target is not reachable!</string>
+    <string name="info_target_reachable">Target is reachable!</string>
+    <string name="info_target_reachable_full">Target: %s\nis reachable!\n\nStart Stress-Test now?</string>
+    <string name="info_stress_test_started">Stress-Test started!</string>
+    <string name="info_stress_test_stopped">Stress-Test stopped!</string>
+
+    <!-- Warnings -->
+    <string name="warning_oom">Running out of Memory! Lower Threads!</string>
+    <string name="warning_valid_target">Please enter a valid Target!</string>
+
     <!-- General -->
-    <string name="default_yes">Yes</string>
-    <string name="default_no">No</string>
-    <string name="default_abort">Abort</string>
-    <string name="defaul_cancel">Cancel</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_abort">Abort</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_success">Success</string>
 
     <!-- Actions -->
     <string name="action_settings">Settings</string>
@@ -31,7 +41,7 @@
     <string name="general_packet_size_units">(in KiloBytes)</string>
     <string name="general_server_java">Java Server</string>
     <string name="general_server_php">PHP Server</string>
-    <string name="general_hint_target">Target IP (127.0.0.1)</string>
+    <string name="general_hint_target">Target IP / Domain (127.0.0.1)</string>
     <string name="general_stress_test_on">Stress-Test running</string>
     <string name="general_stress_test_off">Stress-Test not running</string>
 
@@ -54,7 +64,6 @@
     <string name="debugging_title">Debugging</string>
 
     <!-- Crashes -->
-    <string name="crash_toast_text">Sorry but the Application crashed!\nSent a report to the Developer!</string>
     <string name="pref_disable_acra">Disable Error Reporting</string>
     <string name="pref_acra_disabled">Error Reporting Disabled</string>
     <string name="pref_acra_enabled">Error Reporting Enabled</string>

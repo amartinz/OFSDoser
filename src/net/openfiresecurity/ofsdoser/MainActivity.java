@@ -64,10 +64,7 @@ public class MainActivity extends ActionBarActivity {
                     mToast.cancel();
                 finish();
             } else {
-                mToast = Toast.makeText(getBaseContext(),
-                        getString(R.string.action_press_again),
-                        Toast.LENGTH_SHORT);
-                mToast.show();
+                makeToast(getString(R.string.action_press_again));
             }
             back_pressed = System.currentTimeMillis();
         } else {
@@ -112,7 +109,8 @@ public class MainActivity extends ActionBarActivity {
         enableActionBar();
 
         mPager = (ViewPager) findViewById(R.id.pager);
-        PagerAdapter mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), getFragmentList(), getTitleList());
+        PagerAdapter mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(),
+                getFragmentList(), getTitleList());
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(0);
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
@@ -188,6 +186,14 @@ public class MainActivity extends ActionBarActivity {
     public void updateInformation() {
         if (mInformationFragment != null)
             mInformationFragment.update();
+    }
+
+    public void makeToast(String msg) {
+        if (mToast != null)
+            mToast.cancel();
+
+        mToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+        mToast.show();
     }
 
 }
