@@ -16,6 +16,7 @@ public class ThreadInject extends Thread {
     private final String mUrlString;
     private final String mPost;
     private int mState;
+    private OutputStreamWriter osw;
 
     public ThreadInject(String url, String post) {
         mUrlString = url;
@@ -37,12 +38,10 @@ public class ThreadInject extends Thread {
             conn.setUseCaches(false);
             conn.setDoOutput(true);
             setState(2);
-            OutputStreamWriter osw = new OutputStreamWriter(
-                    conn.getOutputStream());
+            osw = new OutputStreamWriter(conn.getOutputStream());
             setState(3);
             osw.write(mPost);
             osw.flush();
-            osw.close();
             setState(4);
             InputStream in = conn.getInputStream();
             setState(5);
@@ -50,6 +49,11 @@ public class ThreadInject extends Thread {
             setState(6);
             in.close();
         } catch (Throwable ignored) {
+        } finally {
+            try {
+                osw.close();
+            } catch (Exception ignored) {
+            }
         }
         setState(7);
     }

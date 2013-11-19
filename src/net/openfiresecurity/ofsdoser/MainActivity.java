@@ -7,6 +7,7 @@ package net.openfiresecurity.ofsdoser;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -77,8 +78,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        mProgress = (ProgressBar) (menu.findItem(R.id.action_progress))
-                .getActionView().findViewById(R.id.cbpHash);
+        mProgress = (ProgressBar) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
+                .findViewById(R.id.cbpHash);
         mProgress.setVisibility(View.INVISIBLE);
         return true;
     }
