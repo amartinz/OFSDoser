@@ -46,6 +46,8 @@ public class PreferenceStorage {
                 return;
             case PREF_DOS_TIMEOUT:
                 DOS_TIMEOUT = Integer.parseInt(value.toString());
+                DOS_TIMEOUT = (DOS_TIMEOUT == 0 ? 1000 : DOS_TIMEOUT);
+                DOS_TIMEOUT = (DOS_TIMEOUT < 100 ? 100 : DOS_TIMEOUT);
                 return;
             default:
                 break;

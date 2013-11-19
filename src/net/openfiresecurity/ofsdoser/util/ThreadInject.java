@@ -34,7 +34,7 @@ public class ThreadInject extends Thread {
             URL url = new URL(mUrlString);
             setState(1);
             URLConnection conn = url.openConnection();
-            conn.setConnectTimeout(1000);
+            conn.setConnectTimeout(PreferenceStorage.DOS_TIMEOUT);
             conn.setUseCaches(false);
             conn.setDoOutput(true);
             setState(2);

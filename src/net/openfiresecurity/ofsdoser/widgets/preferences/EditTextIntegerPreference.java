@@ -45,7 +45,7 @@ public class EditTextIntegerPreference extends EditTextPreference {
         try {
             return Integer.parseInt(text);
         } catch (NumberFormatException e) {
-            return null;
+            return 1000;
         }
     }
 }

@@ -46,7 +46,7 @@
     <!-- Stress-Test -->
     <string name="pref_stress_test_title">Stress-Test</string>
     <string name="pref_stress_test_timeout_title">Timeout</string>
-    <string name="pref_stress_test_timeout_summary">Specify the timeout for each request.</string>
+    <string name="pref_stress_test_timeout_summary">Specify the timeout for each request.\n0 for default timeout.</string>
     <string name="pref_information_update_title">Show information</string>
     <string name="pref_information_update_summary">Shows information about the Stress-Test.\nMay slow down your device drastically!</string>
 
