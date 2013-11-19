@@ -26,7 +26,7 @@ public class DosService extends Service implements Runnable {
     //====================
     // Fields
     //====================
-    public static int[] states = new int[512];
+    private int[] states = new int[512];
     private boolean shouldRun = false;
     private volatile Thread mThread;
     private int mThreads = 0;
@@ -130,9 +130,9 @@ public class DosService extends Service implements Runnable {
             ThreadInject[] t = new ThreadInject[mThreads];
             List<String> list;
             if (mJava) {
-                list = Lists.javaList;
+                list = Lists.getJavaList();
             } else {
-                list = Lists.phpList;
+                list = Lists.getPhpList();
             }
             do {
                 for (int i = 0; i < t.length; i++) {

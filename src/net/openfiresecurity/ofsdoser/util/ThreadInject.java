@@ -10,7 +10,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Random;
+import java.security.SecureRandom;
 
 public class ThreadInject extends Thread {
     private final String mUrlString;
@@ -26,7 +26,7 @@ public class ThreadInject extends Thread {
     @Override
     public void run() {
         try {
-            Thread.sleep(new Random().nextInt(1000));
+            Thread.sleep(new SecureRandom().nextInt(1000));
         } catch (InterruptedException ignored) {
         }
         setState(0);

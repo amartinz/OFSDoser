@@ -11,9 +11,24 @@ import java.util.List;
 public class Lists {
 
     /**
-     * PHP Server DoS List
+     * Get the HashList for PHP Servers
+     *
+     * @return list of hashes for PHP Servers
      */
-    public static final List<String> phpList = new ArrayList<>(Arrays.asList(new String[]
+    public static List<String> getPhpList() {
+        return phpList;
+    }
+
+    /**
+     * Get the HashList for Java Servers
+     *
+     * @return list of hashes for Java Servers
+     */
+    public static List<String> getJavaList() {
+        return javaList;
+    }
+
+    private static final List<String> phpList = new ArrayList<>(Arrays.asList(new String[]
             {"7FmGIqN", "7FmGIpo", "7FmGJOo",
                     "7FmGJPN", "XOZrHj4", "XOZrHhv", "XOZrHiU", "f99aole", "f99aomD",
                     "XOZrIHU", "XOZrII4", "XOZrIGv", "iCQwI3i", "iCQwI4H", "f99apKe",
@@ -33,10 +48,7 @@ public class Lists {
                     "ZzsecQY", "ZzsecPz", "ZzsecR8", "sC9RUP3", "sC9RUNu", "sC9RUOT",
                     "unREoXX"}));
 
-    /**
-     * Java Server DoS List
-     */
-    public static final List<String> javaList = new ArrayList<>(Arrays.asList(new String[]
+    private static final List<String> javaList = new ArrayList<>(Arrays.asList(new String[]
             {"nmq2iSnUB1", "ihZPJvjj2q",
                     "zlcaxFhPRL", "bDLZaLu4ms", "l1zcWZX6uf", "zt5fwcE11n",
                     "L1kCzaoVez", "aUox608cTr", "UvOjTzleLq", "Q60bfiJIKr",

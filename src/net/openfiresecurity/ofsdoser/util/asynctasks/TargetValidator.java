@@ -68,7 +68,8 @@ public class TargetValidator extends AsyncTask<String, Integer, String> {
             target = target.trim();
             logDebug("Target: " + target);
 
-            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 " + target);
+            final String command = "ping -c 1 " + target;
+            Process p1 = java.lang.Runtime.getRuntime().exec(command);
             int returnVal = p1.waitFor();
 
             if (returnVal == 0) {
