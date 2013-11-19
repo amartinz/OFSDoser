@@ -186,7 +186,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void updateInformation() {
-        mInformationFragment.update();
+        if (mInformationFragment != null)
+            mInformationFragment.update();
     }
 
 }

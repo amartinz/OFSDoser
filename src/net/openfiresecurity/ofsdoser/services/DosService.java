@@ -93,7 +93,8 @@ public class DosService extends Service implements Runnable {
                 // Doser is done
             } else if (localState == 7) {
                 mCounterDone++;
-                MainActivity.mInformationFragment.updateProgress(mCounterDone);
+                if (MainActivity.mInformationFragment != null)
+                    MainActivity.mInformationFragment.updateProgress(mCounterDone);
                 // Error ?
             } else {
 

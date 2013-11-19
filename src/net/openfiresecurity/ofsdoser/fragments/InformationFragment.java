@@ -36,8 +36,10 @@ public class InformationFragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    mCounter.setText(getString(R.string.info_counter, mCount));
-                    v.invalidate();
+                    if (mCounter != null && v != null) {
+                        mCounter.setText(getString(R.string.info_counter, mCount));
+                        v.invalidate();
+                    }
                 } catch (Exception ignored) {
                 }
             }
