@@ -21,6 +21,13 @@
     <PreferenceCategory android:title="@string/debugging_title">
 
         <CheckBoxPreference
+            android:key="acra.disable"
+            android:title="@string/pref_disable_acra"
+            android:summaryOn="@string/pref_acra_disabled"
+            android:summaryOff="@string/pref_acra_enabled"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_extensive_logging"
             android:summary="@string/pref_extensive_logging_summary"

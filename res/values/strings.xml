@@ -55,5 +55,8 @@
 
     <!-- Crashes -->
     <string name="crash_toast_text">Sorry but the Application crashed!\nSent a report to the Developer!</string>
+    <string name="pref_disable_acra">Disable Error Reporting</string>
+    <string name="pref_acra_disabled">Error Reporting Disabled</string>
+    <string name="pref_acra_enabled">Error Reporting Enabled</string>
 
 </resources>
