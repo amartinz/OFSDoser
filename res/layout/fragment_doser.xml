@@ -9,15 +9,6 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <ToggleButton
-        android:id="@+id/tbHashDos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textOff="@string/general_stress_test_off"
-        android:textOn="@string/general_stress_test_on" />
-
     <EditText
         android:id="@+id/etHashdosTarget"
         android:layout_width="wrap_content"
@@ -162,9 +153,27 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/hint_swipe_left"
         android:id="@+id/tvSwipeLeft"
-        android:layout_above="@+id/tbHashDos"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_timeout"
+        android:id="@+id/tvTimeout"
+        android:layout_below="@+id/sbHashThreads"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_counter"
+        android:id="@+id/tvCounter"
+        android:layout_below="@+id/tvTimeout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>

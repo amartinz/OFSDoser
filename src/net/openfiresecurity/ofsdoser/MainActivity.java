@@ -15,11 +15,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import net.openfiresecurity.ofsdoser.fragments.DosFragment;
-import net.openfiresecurity.ofsdoser.fragments.InformationFragment;
 import net.openfiresecurity.ofsdoser.fragments.PrefFragment;
 import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 import net.openfiresecurity.ofsdoser.widgets.adapters.ScreenSlidePagerAdapter;
@@ -34,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
     // Fragments
     //====================
     public static DosFragment mDosFragment;
-    public static InformationFragment mInformationFragment;
+    //public static InformationFragment mInformationFragment;
     public static PrefFragment mPrefFragment;
     //====================
     // Fields
@@ -50,7 +51,9 @@ public class MainActivity extends ActionBarActivity {
     // Others
     //====================
     private Toast mToast;
-    public ProgressBar mProgress;
+    private ProgressBar pbActionStart;
+    private ImageView ivActionStart;
+    private TextView tvActionStart;
 
 
     /**
@@ -75,9 +78,22 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        mProgress = (ProgressBar) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
-                .findViewById(R.id.cbpHash);
-        mProgress.setVisibility(View.INVISIBLE);
+        MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (mDosFragment != null)
+                            mDosFragment.toggleDos();
+                    }
+                });
+        pbActionStart = (ProgressBar) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
+                .findViewById(R.id.pbActionProgress);
+        pbActionStart.setVisibility(View.INVISIBLE);
+        ivActionStart = (ImageView) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
+                .findViewById(R.id.ivActionStart);
+        ivActionStart.setVisibility(View.VISIBLE);
+        tvActionStart = (TextView) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
+                .findViewById(R.id.tvActionStart);
         return true;
     }
 
@@ -149,8 +165,8 @@ public class MainActivity extends ActionBarActivity {
         mList.add(mDosFragment);
 
         // Get instance and add InformationFragment
-        mInformationFragment = new InformationFragment();
-        mList.add(mInformationFragment);
+        //mInformationFragment = new InformationFragment();
+        //mList.add(mInformationFragment);
 
         // Get instance and add PrefFragment
         mPrefFragment = new PrefFragment();
@@ -163,7 +179,7 @@ public class MainActivity extends ActionBarActivity {
         mTitleList = new ArrayList<>();
 
         mTitleList.add(getString(R.string.activity_doser));
-        mTitleList.add(getString(R.string.activity_information));
+        //mTitleList.add(getString(R.string.activity_information));
         mTitleList.add(getString(R.string.activity_preferences));
 
         return mTitleList;
@@ -184,8 +200,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void updateInformation() {
-        if (mInformationFragment != null)
-            mInformationFragment.update();
+        if (mDosFragment != null)
+            mDosFragment.update();
     }
 
     public void makeToast(String msg) {
@@ -194,6 +210,18 @@ public class MainActivity extends ActionBarActivity {
 
         mToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
         mToast.show();
+    }
+
+    public void toggleStartVisibility(boolean mShow) {
+        if (mShow) {
+            pbActionStart.setVisibility(View.INVISIBLE);
+            ivActionStart.setVisibility(View.VISIBLE);
+            tvActionStart.setText(getString(R.string.general_stress_test_off));
+        } else {
+            pbActionStart.setVisibility(View.VISIBLE);
+            ivActionStart.setVisibility(View.INVISIBLE);
+            tvActionStart.setText(getString(R.string.general_stress_test_on));
+        }
     }
 
 }

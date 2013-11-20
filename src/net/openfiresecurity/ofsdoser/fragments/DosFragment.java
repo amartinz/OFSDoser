@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import net.openfiresecurity.ofsdoser.MainActivity;
 import net.openfiresecurity.ofsdoser.R;
@@ -31,16 +29,14 @@ import net.openfiresecurity.ofsdoser.util.asynctasks.TargetValidator;
 public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private RadioButton rbJava;
-    private ToggleButton tb;
     private EditText etTarget;
     private SeekBar sbThreads, sbPacketSize;
-    private TextView tvPacketSize, tvThreads;
+    private TextView tvPacketSize, tvThreads, mTimeout, mCounter;
+    private View v;
     private boolean mRunning = false;
 
     private void logDebug(String msg) {
-        if (PreferenceStorage.EXTENSIVE_LOGGING) {
-            Log.e("OFSDOSER", msg);
-        }
+        ((MainActivity) getActivity()).logDebug(msg);
     }
 
     private void checkArguments() {
@@ -74,15 +70,15 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     etTarget.setText(mResult);
-                    startThread();
-                    tb.setChecked(true);
+                    ((MainActivity) getActivity()).toggleStartVisibility(false);
                     mRunning = true;
+                    startThread();
                 }
             });
             dialog.show();
         } else {
             ((MainActivity) getActivity()).makeToast(getString(R.string.info_target_not_reachable));
-            tb.setChecked(false);
+            ((MainActivity) getActivity()).toggleStartVisibility(true);
         }
     }
 
@@ -93,23 +89,19 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         ((MainActivity) getActivity()).makeToast(getString(R.string.warning_oom));
     }
 
+    public void toggleDos() {
+        if (!mRunning) {
+            checkArguments();
+        } else {
+            stopThread();
+            mRunning = false;
+            ((MainActivity) getActivity()).toggleStartVisibility(true);
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_doser, container, false);
-
-        tb = (ToggleButton) v.findViewById(R.id.tbHashDos);
-        tb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!mRunning) {
-                    tb.setChecked(false);
-                    checkArguments();
-                } else {
-                    stopThread();
-                    mRunning = false;
-                }
-            }
-        });
+        v = inflater.inflate(R.layout.fragment_doser, container, false);
 
         rbJava = (RadioButton) v.findViewById(R.id.radio1);
         tvPacketSize = (TextView) v.findViewById(R.id.tvPacketSize);
@@ -131,7 +123,34 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         sbThreads.setProgress(PreferenceStorage.LAST_THREADS);
         sbPacketSize.setProgress(PreferenceStorage.LAST_PACKETSIZE);
 
+        // Information
+        mTimeout = (TextView) v.findViewById(R.id.tvTimeout);
+        mTimeout.setText(getString(R.string.info_timeout, PreferenceStorage.DOS_TIMEOUT));
+
+        mCounter = (TextView) v.findViewById(R.id.tvCounter);
+        mCounter.setText(getString(R.string.info_counter, "0"));
+
         return v;
+    }
+
+    public void updateProgress(final int mCount) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (mCounter != null && v != null) {
+                        mCounter.setText(getString(R.string.info_counter, mCount));
+                        v.invalidate();
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+        });
+    }
+
+    public void update() {
+        // Update Timeout Information
+        mTimeout.setText(getString(R.string.info_timeout, PreferenceStorage.DOS_TIMEOUT));
     }
 
     private void startThread() {
@@ -142,7 +161,6 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_THREADS, mThreads);
         PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_PACKETSIZE, mPacketSize);
         ((MainActivity) getActivity()).makeToast(getString(R.string.info_stress_test_started));
-        ((MainActivity) getActivity()).mProgress.setVisibility(View.VISIBLE);
         Intent i = new Intent(getActivity(), DosService.class);
         i.putExtra(DosService.BUNDLE_THREADS, mThreads);
         i.putExtra(DosService.BUNDLE_PACKETSIZE, mPacketSize);
@@ -153,7 +171,6 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
 
     private void stopThread() {
         ((MainActivity) getActivity()).makeToast(getString(R.string.info_stress_test_stopped));
-        ((MainActivity) getActivity()).mProgress.setVisibility(View.INVISIBLE);
         getActivity().startService(new Intent(getActivity(), DosService.class));
     }
 

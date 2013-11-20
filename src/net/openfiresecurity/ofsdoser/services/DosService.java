@@ -53,7 +53,7 @@ public class DosService extends Service implements Runnable {
             mThreads = intent.getIntExtra(DosService.BUNDLE_THREADS, 1);
             mPacketSize = intent.getIntExtra(DosService.BUNDLE_PACKETSIZE, 1);
             mJava = intent.getBooleanExtra(DosService.BUNDLE_JAVA, false);
-            mHost = intent.getStringExtra(DosService.BUNDLE_HOST);
+            mHost = formatHost(intent.getStringExtra(DosService.BUNDLE_HOST));
             shouldRun = true;
             startThread();
         } else if (intent.hasExtra(DosService.BUNDLE_GET_INSTANCE)) {
@@ -66,6 +66,15 @@ public class DosService extends Service implements Runnable {
         return START_NOT_STICKY;
     }
 
+    private String formatHost(String stringExtra) {
+        String s = stringExtra;
+        if (!s.startsWith("http://")) {
+            s = "http://" + stringExtra;
+        }
+
+        return s;
+    }
+
     //====================
     // Methods
     //====================
@@ -73,35 +82,11 @@ public class DosService extends Service implements Runnable {
         states[i] = localState;
         //only do if the user decided to show it
         if (PreferenceStorage.INFORMATION_UPDATE) {
-            // Just woke up
-            if (localState == 0) {
-
-                // Setting up connection
-            } else if (localState == 1) {
-
-                // Creating writer
-            } else if (localState == 2) {
-
-                // Writing...
-            } else if (localState == 3) {
-
-                // Flushing and closing
-            } else if (localState == 4) {
-
-                // Creating inputstream
-            } else if (localState == 5) {
-
-                // Reading inputstream
-            } else if (localState == 6) {
-
-                // Doser is done
-            } else if (localState == 7) {
+            if (localState == 7) {
                 mCounterDone++;
-                if (MainActivity.mInformationFragment != null)
-                    MainActivity.mInformationFragment.updateProgress(mCounterDone);
-                // Error ?
-            } else {
-
+                if (MainActivity.mDosFragment != null) {
+                    MainActivity.mDosFragment.updateProgress(mCounterDone);
+                }
             }
         }
     }

@@ -16,7 +16,6 @@
         android:title="@string/action_settings" />
 
     <item
-        android:title="@string/default_empty"
         android:id="@+id/action_progress"
         android:orderInCategory="90"
         android:actionLayout="@layout/actionbar_progress"
