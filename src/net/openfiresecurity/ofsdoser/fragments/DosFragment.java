@@ -128,18 +128,24 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         sbThreads.setOnSeekBarChangeListener(this);
 
         etTarget.setText(PreferenceStorage.LAST_TARGET);
+        sbThreads.setProgress(PreferenceStorage.LAST_THREADS);
+        sbPacketSize.setProgress(PreferenceStorage.LAST_PACKETSIZE);
 
         return v;
     }
 
     private void startThread() {
         final String mTarget = (etTarget.getText() != null ? etTarget.getText().toString() : "");
+        final int mThreads = sbThreads.getProgress() + 1;
+        final int mPacketSize = sbPacketSize.getProgress() + 1;
         PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_TARGET, mTarget);
+        PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_THREADS, mThreads);
+        PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_PACKETSIZE, mPacketSize);
         ((MainActivity) getActivity()).makeToast(getString(R.string.info_stress_test_started));
         ((MainActivity) getActivity()).mProgress.setVisibility(View.VISIBLE);
         Intent i = new Intent(getActivity(), DosService.class);
-        i.putExtra(DosService.BUNDLE_THREADS, sbThreads.getProgress() + 1);
-        i.putExtra(DosService.BUNDLE_PACKETSIZE, sbPacketSize.getProgress() + 1);
+        i.putExtra(DosService.BUNDLE_THREADS, mThreads);
+        i.putExtra(DosService.BUNDLE_PACKETSIZE, mPacketSize);
         i.putExtra(DosService.BUNDLE_JAVA, rbJava.isChecked());
         i.putExtra(DosService.BUNDLE_HOST, mTarget);
         getActivity().startService(i);
