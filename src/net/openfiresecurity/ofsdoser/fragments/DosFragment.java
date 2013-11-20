@@ -162,10 +162,10 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         PreferenceStorage.setPreference(PreferenceStorage.PREF_LAST_PACKETSIZE, mPacketSize);
         ((MainActivity) getActivity()).makeToast(getString(R.string.info_stress_test_started));
         Intent i = new Intent(getActivity(), DosService.class);
-        i.putExtra(DosService.BUNDLE_THREADS, mThreads);
-        i.putExtra(DosService.BUNDLE_PACKETSIZE, mPacketSize);
-        i.putExtra(DosService.BUNDLE_JAVA, rbJava.isChecked());
-        i.putExtra(DosService.BUNDLE_HOST, mTarget);
+        i.putExtra(DosService.BUNDLE_THREADS, mThreads)
+                .putExtra(DosService.BUNDLE_PACKETSIZE, mPacketSize)
+                .putExtra(DosService.BUNDLE_JAVA, rbJava.isChecked())
+                .putExtra(DosService.BUNDLE_HOST, mTarget);
         getActivity().startService(i);
     }
 
