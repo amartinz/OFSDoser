@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013. Alexander Martinz.
+ * Copyright (c) 2013. Alexander Martinz
  */
 
 package net.openfiresecurity.ofsdoser.fragments;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013. Alexander Martinz
+ */
+
 package net.openfiresecurity.ofsdoser.fragments;
 
 import android.os.Bundle;
@@ -11,7 +15,7 @@ import net.openfiresecurity.ofsdoser.R;
 import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 
 /**
- * Created by alex on 13.11.13.
+ * InformationFragment, shows information about the Stress-Test
  */
 public class InformationFragment extends Fragment {
 

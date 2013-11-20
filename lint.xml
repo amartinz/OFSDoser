@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2013. Alexander Martinz
+  -->
+
 <lint>
     <issue id="BackButton" severity="warning" />
     <issue id="EasterEgg" severity="warning" />

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013. Alexander Martinz
+ */
+
 package net.openfiresecurity.ofsdoser.widgets.preferences;
 
 import android.content.Context;
@@ -6,7 +10,7 @@ import android.text.InputType;
 import android.util.AttributeSet;
 
 /**
- * Created by alex on 18.11.13.
+ * Custom EditTestPreference for Integers
  */
 public class EditTextIntegerPreference extends EditTextPreference {
 

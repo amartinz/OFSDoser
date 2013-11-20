@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013. Alexander Martinz
+ */
+
 package net.openfiresecurity.ofsdoser.widgets.adapters;
 
 import android.support.v4.app.Fragment;
@@ -7,7 +11,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.List;
 
 /**
- * Created by alex on 14.11.13.
+ * PagerAdapter for the ViewPager
  */
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013. Alexander Martinz
+ */
+
 package net.openfiresecurity.ofsdoser.widgets.transformers;
 
 import android.os.Build;
@@ -5,7 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**
- * Created by alex on 14.11.13.
+ * Transformer for the ViewPager, does some nice
+ * animations on Android 3.0+
  */
 public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.85f;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013. Alexander Martinz
+ */
+
 package net.openfiresecurity.ofsdoser.services;
 
 import android.app.Service;
@@ -13,7 +17,7 @@ import net.openfiresecurity.ofsdoser.util.WakeLocker;
 import java.util.List;
 
 /**
- * Created by alex on 14.11.13.
+ * DosService, an Interface for starting / stopping the Stress-Test Threads.
  */
 public class DosService extends Service implements Runnable {
 

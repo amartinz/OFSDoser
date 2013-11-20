@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013. Alexander Martinz
+ */
+
 package net.openfiresecurity.ofsdoser.fragments;
 
 import android.app.AlertDialog;
@@ -22,7 +26,7 @@ import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 import net.openfiresecurity.ofsdoser.util.asynctasks.TargetValidator;
 
 /**
- * Created by alex on 13.11.13.
+ * DoSFragment, contains the interface for editing and starting the Stress-Test.
  */
 public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 

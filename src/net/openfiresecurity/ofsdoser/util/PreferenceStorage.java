@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013. Alexander Martinz
+ */
+
 package net.openfiresecurity.ofsdoser.util;
 
 import android.content.Context;
@@ -5,7 +9,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 /**
- * Created by alex on 18.11.13.
+ * Used for getting and setting Preferences.
  */
 public class PreferenceStorage {
 
