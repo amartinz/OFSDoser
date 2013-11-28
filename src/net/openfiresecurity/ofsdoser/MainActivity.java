@@ -22,21 +22,26 @@ import android.widget.Toast;
 
 import net.openfiresecurity.ofsdoser.fragments.DosFragment;
 import net.openfiresecurity.ofsdoser.fragments.PrefFragment;
+import net.openfiresecurity.ofsdoser.services.DosService;
 import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 import net.openfiresecurity.ofsdoser.widgets.adapters.ScreenSlidePagerAdapter;
 import net.openfiresecurity.ofsdoser.widgets.transformers.ZoomOutPageTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends ActionBarActivity {
 
     //====================
     // Fragments
     //====================
-    public static DosFragment mDosFragment;
+    public DosFragment mDosFragment;
     //public static InformationFragment mInformationFragment;
-    public static PrefFragment mPrefFragment;
+    public PrefFragment mPrefFragment;
     //====================
     // Fields
     //====================
@@ -53,7 +58,12 @@ public class MainActivity extends ActionBarActivity {
     private Toast mToast;
     private ProgressBar pbActionStart;
     private ImageView ivActionStart;
-    private TextView tvActionStart;
+    private TextView mCounter;
+    //====================
+    // Scheduler
+    //====================
+    private final ScheduledExecutorService mScheduler = Executors.newScheduledThreadPool(1);
+    private ScheduledFuture mSchedulerPacketsUpdate;
 
 
     /**
@@ -92,8 +102,9 @@ public class MainActivity extends ActionBarActivity {
         ivActionStart = (ImageView) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
                 .findViewById(R.id.ivActionStart);
         ivActionStart.setVisibility(View.VISIBLE);
-        tvActionStart = (TextView) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
-                .findViewById(R.id.tvActionStart);
+        mCounter = (TextView) MenuItemCompat.getActionView(menu.findItem(R.id.action_progress))
+                .findViewById(R.id.tvCounter);
+        mCounter.setText(getString(R.string.info_counter, "0"));
         return true;
     }
 
@@ -199,11 +210,6 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    public void updateInformation() {
-        if (mDosFragment != null)
-            mDosFragment.update();
-    }
-
     public void makeToast(String msg) {
         if (mToast != null)
             mToast.cancel();
@@ -216,12 +222,40 @@ public class MainActivity extends ActionBarActivity {
         if (mShow) {
             pbActionStart.setVisibility(View.INVISIBLE);
             ivActionStart.setVisibility(View.VISIBLE);
-            tvActionStart.setText(getString(R.string.general_stress_test_off));
         } else {
             pbActionStart.setVisibility(View.VISIBLE);
             ivActionStart.setVisibility(View.INVISIBLE);
-            tvActionStart.setText(getString(R.string.general_stress_test_on));
         }
     }
 
+    //================
+    // Runnable
+    //================
+    final Runnable mSchedulerPacketsUpdateRunnable = new Runnable() {
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (mCounter != null) {
+                            mCounter.setText(getString(R.string.info_counter,
+                                    DosService.mCounterDone));
+                            mCounter.invalidate();
+                        }
+                    } catch (Exception ignored) {
+                    }
+                }
+            });
+        }
+    };
+
+    public void schedulePacketsUpdate() {
+        mSchedulerPacketsUpdate = mScheduler.scheduleAtFixedRate(
+                mSchedulerPacketsUpdateRunnable, 1, 2, TimeUnit.SECONDS);
+    }
+
+    public void unschedulePacketsUpdate() {
+        if (mSchedulerPacketsUpdate != null)
+            mSchedulerPacketsUpdate.cancel(true);
+    }
 }

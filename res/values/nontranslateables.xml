@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <!--
   ~ Copyright (c) 2013. Alexander Martinz
   -->
 
 <resources>
+
     <string name="app_name" translateable="false">OFS Stress-Tester</string>
     <string name="DUMMY" translateable="false" />
     <string name="default_empty" translateable="false" />
@@ -15,4 +16,5 @@
     <string name="packet_size_max" translateable="false">1024</string>
     <string name="packet_size_middle" translateable="false">512</string>
     <string name="packet_size_min" translateable="false">@string/default_min</string>
+
 </resources>

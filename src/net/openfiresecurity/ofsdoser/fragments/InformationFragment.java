@@ -14,15 +14,14 @@ import net.openfiresecurity.ofsdoser.R;
 
 /**
  * InformationFragment, shows information about the Stress-Test
+ * <p/>
+ * UNUSED FOR NOW
  */
 public class InformationFragment extends Fragment {
 
-    private View v;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_information, container, false);
-
-        return v;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_information, container, false);
     }
 }

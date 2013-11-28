@@ -9,7 +9,6 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.support.v4.preference.PreferenceFragment;
 
-import net.openfiresecurity.ofsdoser.MainActivity;
 import net.openfiresecurity.ofsdoser.R;
 import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 import net.openfiresecurity.ofsdoser.widgets.preferences.EditTextIntegerPreference;
@@ -50,10 +49,6 @@ public class PrefFragment extends PreferenceFragment implements Preference.OnPre
                 newValue = "1000";
             PreferenceStorage.setPreference(PreferenceStorage.PREF_DOS_TIMEOUT, newValue);
             changed = true;
-        }
-
-        if (changed) {
-            ((MainActivity) getActivity()).updateInformation();
         }
 
         return changed;

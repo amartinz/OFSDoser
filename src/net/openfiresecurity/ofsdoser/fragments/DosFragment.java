@@ -31,7 +31,7 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
     private RadioButton rbJava;
     private EditText etTarget;
     private SeekBar sbThreads, sbPacketSize;
-    private TextView tvPacketSize, tvThreads, mTimeout, mCounter;
+    private TextView tvPacketSize, tvThreads;
     private View v;
     private boolean mRunning = false;
 
@@ -123,34 +123,7 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
         sbThreads.setProgress(PreferenceStorage.LAST_THREADS);
         sbPacketSize.setProgress(PreferenceStorage.LAST_PACKETSIZE);
 
-        // Information
-        mTimeout = (TextView) v.findViewById(R.id.tvTimeout);
-        mTimeout.setText(getString(R.string.info_timeout, PreferenceStorage.DOS_TIMEOUT));
-
-        mCounter = (TextView) v.findViewById(R.id.tvCounter);
-        mCounter.setText(getString(R.string.info_counter, "0"));
-
         return v;
-    }
-
-    public void updateProgress(final int mCount) {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (mCounter != null && v != null) {
-                        mCounter.setText(getString(R.string.info_counter, mCount));
-                        v.invalidate();
-                    }
-                } catch (Exception ignored) {
-                }
-            }
-        });
-    }
-
-    public void update() {
-        // Update Timeout Information
-        mTimeout.setText(getString(R.string.info_timeout, PreferenceStorage.DOS_TIMEOUT));
     }
 
     private void startThread() {
@@ -167,11 +140,16 @@ public class DosFragment extends Fragment implements SeekBar.OnSeekBarChangeList
                 .putExtra(DosService.BUNDLE_JAVA, rbJava.isChecked())
                 .putExtra(DosService.BUNDLE_HOST, mTarget);
         getActivity().startService(i);
+
+
+        ((MainActivity) getActivity()).schedulePacketsUpdate();
     }
 
     private void stopThread() {
         ((MainActivity) getActivity()).makeToast(getString(R.string.info_stress_test_stopped));
         getActivity().startService(new Intent(getActivity(), DosService.class));
+
+        ((MainActivity) getActivity()).unschedulePacketsUpdate();
     }
 
     @Override

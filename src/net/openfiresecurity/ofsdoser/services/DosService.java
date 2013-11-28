@@ -8,7 +8,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-import net.openfiresecurity.ofsdoser.MainActivity;
 import net.openfiresecurity.ofsdoser.util.Lists;
 import net.openfiresecurity.ofsdoser.util.PreferenceStorage;
 import net.openfiresecurity.ofsdoser.util.ThreadInject;
@@ -37,7 +36,7 @@ public class DosService extends Service implements Runnable {
     private int mPacketSize = 0;
     private boolean mJava = false;
     private String mHost = "";
-    private int mCounterDone = 0;
+    public static int mCounterDone = 0;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -84,9 +83,6 @@ public class DosService extends Service implements Runnable {
         if (PreferenceStorage.INFORMATION_UPDATE) {
             if (localState == 7) {
                 mCounterDone++;
-                if (MainActivity.mDosFragment != null) {
-                    MainActivity.mDosFragment.updateProgress(mCounterDone);
-                }
             }
         }
     }

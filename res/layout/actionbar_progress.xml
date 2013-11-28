@@ -37,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/general_stress_test_off"
-        android:id="@+id/tvActionStart"
+        android:text="@string/info_counter"
+        android:id="@+id/tvCounter"
         android:layout_toRightOf="@+id/actionStartActions"
         android:layout_centerVertical="true" />
 
