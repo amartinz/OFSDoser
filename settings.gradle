@@ -1,5 +1,1 @@
-/*
- * Copyright (c) 2013. Alexander Martinz
- */
-
-include ':'
+include ':app'
