@@ -6,15 +6,22 @@
 
 <resources>
 
-    <string name="app_name" translateable="false">OFS Stress-Tester</string>
-    <string name="DUMMY" translateable="false" />
-    <string name="default_empty" translateable="false" />
-    <string name="default_min" translateable="false">1</string>
-    <string name="threads_max" translateable="false">512</string>
-    <string name="threads_middle" translateable="false">256</string>
-    <string name="threads_min" translateable="false">@string/default_min</string>
-    <string name="packet_size_max" translateable="false">1024</string>
-    <string name="packet_size_middle" translateable="false">512</string>
-    <string name="packet_size_min" translateable="false">@string/default_min</string>
+    <string name="app_name" translatable="false">Stress-Tester</string>
+    <string name="DUMMY" translatable="false" />
+    <string name="default_empty" translatable="false" />
+    <string name="default_min" translatable="false">1</string>
+    <string name="threads_max" translatable="false">512</string>
+    <string name="threads_middle" translatable="false">256</string>
+    <string name="threads_min" translatable="false">@string/default_min</string>
+    <string name="packet_size_max" translatable="false">1024</string>
+    <string name="packet_size_middle" translatable="false">512</string>
+    <string name="packet_size_min" translatable="false">@string/default_min</string>
+
+    <!--  Strings for possible PreferenceActivity Back/Next buttons -->
+    <string name="back_button_label" translatable="false">Back</string>
+    <string name="next_button_label" translatable="false">Next</string>
+
+    <!-- Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] -->
+    <string name="skip_button_label" translatable="false">Skip</string>
 
 </resources>

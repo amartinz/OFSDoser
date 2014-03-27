@@ -2,7 +2,7 @@
 .gradle/
 build/
 *.apk
-build.gradle
+app/build.gradle
 MyApplication.java
 gen/
 *.iml
